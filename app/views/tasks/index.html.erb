@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Your Tasks</h1>
+  <p>Create a task, modify it, view it or delete it</p>
+  <%= link_to "Create new task", new_task_path %>
+  <% @tasks.each do |task| %>
+    <div class="product">
+      <div class='product-upvote'>
+        <div class="product-arrow"></div>
+        <div class='product-count'><%= task.id %></div>
+      </div>
+      <div class='product-body'>
+        <h3><%= link_to task.name, task_path(task) %></h3>
+        <p><%= task.description %></p>
+      </div>
+      <ul class="list-inline product-controls hidden-sm hidden-xs">
+        <li>
+          <%= link_to edit_task_path(task) do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to task_path(task), method: :delete do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+  <%= link_to "Create new task", new_task_path %>
+</div>
+
+
